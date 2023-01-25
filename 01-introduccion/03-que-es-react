@@ -1,0 +1,9 @@
+¿Qué es React?
+
+- Es una librería creada y mantenida por Facebook
+- Se utiliza para crear interfaces gráficas
+- Es una librería declarativa
+- Es SIMPLE (contiene pocos elementos)
+- Soporta renderizado en el servidor
+- Se puede extender facilmente
+- Está basada en componentes
