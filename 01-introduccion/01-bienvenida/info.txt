@@ -1,0 +1,2 @@
+React es una de las librerias más utilizadas en el mundo para contruir aplicaciones web, para comenzar debemos respondernos las siguientes preguntas basicas: 
+¿Que es React?, ¿Para que podemos utilizar React?, y ¿Como le podemos sacar el maximo provecho a React?
