@@ -1,5 +1,8 @@
 /* En este video veremos las fat arrow functions
  * Veremos cúales son las diferencias entre las fat arrow functions y las fuctions tradiconales o normales
+ *
+ * Funciones que se declaran con la palabra reservada function
+ * ----------------------------------------------------------- 
  */
 
 function Fn() {
@@ -40,4 +43,23 @@ console.log(ar.__proto__)
 // 4.- Y por ultimo el prototipo de las funciones se va a asignar al valor de this
 // Esto quiere decir que sin importar lo que este en el return, la función devolvera un objeto literal con las propiedades y métodos que se 
 // hayan definido dentro de la misma.
+
+/* fat arrow functions
+ * -------------------
+ */
+
+const fatFn = () => {
+  return 'Chanchito Feliz'
+}
+
+const r1 = fatFn()
+
+console.log(r1)
+
+// Ahora veamos que es lo que sucede si realizamos una llamada a una función fat arrow function con la palabra reservada new:
+
+// const r2 = new fatFn()
+
+// TypeError: fatFn is not a constructor
+//     at Object.<anonymous> (/Users/manuel/Development/Learning/Frontend/React/nicolas-schurmann/react-guia-definitiva/03-lo-que-necesitas-saber-de-javascript/07-arrow-functions.js:61:12)
 
