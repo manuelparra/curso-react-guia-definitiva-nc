@@ -56,6 +56,16 @@ const r1 = fatFn()
 
 console.log(r1)
 
+const fnR = () => 2
+
+console.log(fnR())
+
+const fnR2 = () => {
+  return 3
+}
+
+console.log(fnR2())
+
 // Ahora veamos que es lo que sucede si realizamos una llamada a una función fat arrow function con la palabra reservada new:
 
 // const r2 = new fatFn()
@@ -63,3 +73,10 @@ console.log(r1)
 // TypeError: fatFn is not a constructor
 //     at Object.<anonymous> (/Users/manuel/Development/Learning/Frontend/React/nicolas-schurmann/react-guia-definitiva/03-lo-que-necesitas-saber-de-javascript/07-arrow-functions.js:61:12)
 
+// Las funciones fat arrow function no itenen contexto de this. Si itilizamos this dentro de una función fat arrow function lo que en realidad estamos
+// haciendo es modificando el this del scope anterior a la definición de la función o al de más arriba, es decir al this que se encuentra fuera de la 
+// declaración de la fat arrow function
+
+// Entonces entre las diferencias entre function y fat arrow function tenomos:
+// 1.- Las fat arrow function no utilizan contexto de this mientras que las function si tienen contexto de this y por ende podemos crear instancias
+// 2.- Las fat arrow function al omitir las llaves tienen un return implicito.
