@@ -23,12 +23,14 @@ console.log(Cuadrado, Triangulo)
 // antes de su definición,
 
 class Chancho {
-  constructor() {
-    console.log('Soy un chancho feliz.')
+  constructor(estado = 'feliz') {
+    console.log(`Soy un chancho ${estado}.`)
   }
 }
 
-const feliz = new Chancho()
+const nose = new Chancho()
+const triste = new Chancho('triste')
+const feliz = new Chancho('feliz')
 
 // Cada vez que nosontros llamemos a una clase con la palabra reservada de new, esta va a
 // ejecutar el contructor de la clase. Siempre que queramos declarar una nueva instancia de 
