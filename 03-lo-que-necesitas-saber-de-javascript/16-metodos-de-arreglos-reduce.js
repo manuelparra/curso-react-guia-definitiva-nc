@@ -44,4 +44,12 @@ const r5 = users.reduce((acc, el) =>
 
 console.log(r5)
 
+const r6 = users.reduce((acc, el) => {
+  if (el.id < 2) {
+    return acc
+  }
+  return acc.concat(el)
+}, [])
+
+console.log(r6)
 
