@@ -35,3 +35,4 @@ const fn = async() => {
   console.log(data)
 }
 
+fn()
