@@ -20,17 +20,17 @@ const styles = {
 
 class Card extends Component {
   render() {
-    const { card } = this.props
+    const { card, isCardVisible, showCard } = this.props
     const cantidad = card.reduce((acc, el) => acc + el.cantidad, 0)
     return (
       <div>
         <span style={styles.bubble}>
           {(cantidad !== 0 ? <BubbleAlert value={cantidad} /> : null)}
         </span>
-        <button style={styles.card}>
+        <button onClick={showCard} style={styles.card}>
           Carro
         </button>
-        <CardDetails card={card} />
+        {isCardVisible ? <CardDetails card={card} />: null}
       </div>
     )
   }
