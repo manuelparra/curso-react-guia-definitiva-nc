@@ -16,6 +16,7 @@ const App = () => {
       Contador: {contador}
       <br />
       <button style={{ marginTop: '10px' }} onClick={() => setContador(contador + 1)}>Incrementar</button>
+      <button style={{ marginLeft: '5px' }} onClick={() => setContador(contador - 1)}>Decrementar</button>
     </div>
   )
 }
