@@ -1,3 +1,9 @@
+// En React lo recomendado es utilizar controlled components pero en el caso de que nuestro
+// formularo contenga un archivo, se debe utilizar uncontrolled components para este elemento,
+// además es puede utilizar uncontrolled components para los casos en los que estemos migradon una
+// pagina web y tengamos que evitar refactorizar código en las primeras de cambio, 
+// para planificar y ejecutar dichas refatorizaciones dando o asignado prioridad segun la criticidad 
+// de cada parte del sitio web.
 
 const submit = (e) => {
   e.preventDefault()
