@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const App = () => {
-  const [value, setValue] = useState({ normal: 'Por defecto', texto: '', select: '', check: false })
+  const [value, setValue] = useState({ normal: 'Por defecto', texto: '', select: '', check: false, estado: '' })
   const handleChange = ({ target }) => {
     console.log(target.type, target.checked)
     setValue((state) => ({
@@ -28,8 +28,15 @@ const App = () => {
         type="checkbox"
         name="check"
         onChange={handleChange}
-        checked={value.check} />
-      
+        checked={value.check} 
+      />
+     
+      <div onChange={handleChange}>
+        <label>Chancho</label>
+        <input type="radio" value="feliz" name="estado" /> Feliz
+        <input type="radio" value="triste" name="estado" /> Triste
+        <input type="radio" value="felipe" name="estado" /> Felipe
+      </div>
     </div>
   )
 }
