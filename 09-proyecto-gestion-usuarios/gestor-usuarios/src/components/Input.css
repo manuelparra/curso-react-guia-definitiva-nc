@@ -14,10 +14,11 @@
   background-color: #fff;
   outline: 0;
   font-size: 20px;
-  padding: 10px, 15px;
+  padding: 10px 15px;
   border: 1px solid rgb(34, 34, 34, 0.15);
   color: #222;
   border-radius: 4px;
   width: 100%;
+  box-sizing: border-box;
 }
 
