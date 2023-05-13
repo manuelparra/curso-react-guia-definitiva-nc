@@ -13,8 +13,6 @@ const App = () => {
     ])
   } 
 
-  console.log(usuarios)
-  
   return (
     <div style={{ marginTop: '7%' }}>
       <Container>
