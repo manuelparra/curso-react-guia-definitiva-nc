@@ -3,15 +3,14 @@ import Button from './Button'
 import useFormulario from '../hooks/useFormulario'
 
 const UserForm = ({ submit }) => {
-  const [formulario, handleChange, reset] = useFormulario({ 
+  const [data, handleChange, reset] = useFormulario({ 
     name: '', 
     lastname: '',
     email: '',
   })
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    submit(formulario)
+    submit(data)
     reset()
   }
 
@@ -20,21 +19,21 @@ const UserForm = ({ submit }) => {
       <Input 
         label="Nombre" 
         name="name" 
-        value={formulario.name} 
+        value={data.name} 
         onChange={handleChange} 
         placeholder="Nombre"
       />
       <Input 
         label="Apellido" 
         name="lastname" 
-        value={formulario.lastname} 
+        value={data.lastname} 
         onChange={handleChange} 
         placeholder="Apellido"
       />
       <Input 
         label="Correo" 
         name="email" 
-        value={formulario.email} 
+        value={data.email} 
         onChange={handleChange} 
         placeholder="Correo electrónico"
       />
