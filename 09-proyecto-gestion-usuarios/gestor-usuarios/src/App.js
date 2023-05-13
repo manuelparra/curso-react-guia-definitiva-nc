@@ -26,40 +26,42 @@ const App = () => {
   console.log(formulario, usuarios)
   
   return (
-    <Container>
-      <Card>
-        <div style={{ padding: 20 }} >
-          <form onSubmit={submit}>
-            <Input 
-              label="Nombre" 
-              name="name" 
-              value={formulario.name} 
-              onChange={handleChange} 
-            />
-            <Input 
-              label="Apellido" 
-              name="lastname" 
-              value={formulario.lastname} 
-              onChange={handleChange} 
-            />
-            <Input 
-              label="Correo" 
-              name="email" 
-              value={formulario.email} 
-              onChange={handleChange} 
-            />
-            <Button>Enviar</Button>
-          </form>
-        </div>
-      </Card>
-      <Card>
-        <ul>
-          {usuarios.map(x => 
-            <li key={x.email}>{`${x.name} ${x.lastname}: ${x.email}`}</li>
-          )}
-        </ul>
-      </Card>
-    </Container>
+    <div style={{ marginTop: '7%' }}>
+      <Container>
+        <Card>
+          <div style={{ padding: 20 }} >
+            <form onSubmit={submit}>
+              <Input 
+                label="Nombre" 
+                name="name" 
+                value={formulario.name} 
+                onChange={handleChange} 
+              />
+              <Input 
+                label="Apellido" 
+                name="lastname" 
+                value={formulario.lastname} 
+                onChange={handleChange} 
+              />
+              <Input 
+                label="Correo" 
+                name="email" 
+                value={formulario.email} 
+                onChange={handleChange} 
+              />
+              <Button>Enviar</Button>
+            </form>
+          </div>
+        </Card>
+        <Card>
+          <ul>
+            {usuarios.map(x => 
+              <li key={x.email}>{`${x.name} ${x.lastname}: ${x.email}`}</li>
+            )}
+          </ul>
+        </Card>
+      </Container>
+    </div>
   );
 }
 
