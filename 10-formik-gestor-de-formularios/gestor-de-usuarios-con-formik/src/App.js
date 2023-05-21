@@ -10,7 +10,7 @@ const App = () => {
     setUsers([
       ...users, 
       user
-    ])  
+    ])
   } 
 
   return (
