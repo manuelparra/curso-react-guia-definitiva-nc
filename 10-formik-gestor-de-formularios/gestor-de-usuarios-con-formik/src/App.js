@@ -21,6 +21,13 @@ const App = () => {
             <UserForm submit={submit} />
           </div>
         </Card>
+        <Card>
+          <ul>
+            {users.map(x => 
+              <li key={x.email}>{`${x.name} ${x.lastname}: ${x.email}`}</li> 
+            )}
+          </ul>    
+        </Card>
       </Container>
     </div>
   );
