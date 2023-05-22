@@ -6,7 +6,8 @@ button.button {
   border: none;
   padding: 10px 20px;
   font-weight: 15px;
-  font-size: 15px;
+  font-size: 15px !important;
+  font-family: Lato, sans-serif !important;
   cursor: pointer;
 }
 
