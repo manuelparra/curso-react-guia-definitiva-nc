@@ -2,6 +2,24 @@ import { useFormik } from 'formik'
 import Input from './Input'
 import Button from './Button' 
 
+const validate = (values) => {
+  const errors = {}
+
+  if(!values.name) {
+    errors.name = 'Campo requerido'
+  }
+
+  if(!values.lastname) {
+    errors.lastname = 'Campo requerido'
+  }
+
+  if(!values.email) {
+    errors.email = 'Campo requerido'
+  }
+
+  return errors
+}
+
 const UserForm = ({ submit }) => {
   const data = useFormik({
     initialValues: {
@@ -9,6 +27,7 @@ const UserForm = ({ submit }) => {
       lastname: '',
       email: '',
     },
+    validate,
     onSubmit: (values, actions) => {
       submit(values)
       actions.resetForm()
@@ -24,7 +43,6 @@ const UserForm = ({ submit }) => {
         onChange={data.handleChange}
         value={data.values.name}
         placeholder="Nombre"
-        
       />
       <Input
         label="Apellido"
