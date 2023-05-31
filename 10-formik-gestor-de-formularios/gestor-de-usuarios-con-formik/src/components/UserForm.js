@@ -1,4 +1,6 @@
 import { useFormik } from 'formik'
+
+import './UserForm.css'
 import Input from './Input'
 import Button from './Button' 
 
@@ -38,28 +40,25 @@ const UserForm = ({ submit }) => {
     <form onSubmit={data.handleSubmit}>
       <Input 
         label="Nombre"
-        name="name"
         type="text"
-        onChange={data.handleChange}
-        value={data.values.name}
+        {...data.getFieldProps('name')}
         placeholder="Nombre"
       />
+      {data.touched.name && data.errors.name ? <div className="field-errors">{data.errors.name}</div> : null}
       <Input
         label="Apellido"
-        name="lastname"
         type="text"
-        onChange={data.handleChange}
-        value={data.values.lastname}
+        {...data.getFieldProps('lastname')}
         placeholder="Apellido"
       />
+      {data.touched.lastname && data.errors.lastname ? <div className="field-errors">{data.errors.lastname}</div> : null}
       <Input
         label="Correo Electrónico"
-        name="email"
         type="email"
-        onChange={data.handleChange}
-        value={data.values.email}
+        {...data.getFieldProps('email')}
         placeholder="Correo Electrónico"
       />
+      {data.touched.email && data.errors.email ? <div className="field-errors">{data.errors.email}</div> : null}
       <Button type="submit">Enviar</Button>
     </form> 
   )
