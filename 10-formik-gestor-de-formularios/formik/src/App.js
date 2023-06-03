@@ -31,7 +31,12 @@ const App = () => {
     >
       <Form>
         <label>Nombre</label>
-        <Field name="name" type="text" />
+        <Field name="name" type="text" className="input" />
+        <br />
+        <Field name="option" as="select" className="select">
+          <option value="chanchitofeliz">Chanchito feliz</option>
+          <option value="chanchitotriste">Chanchito triste</option>
+        </Field>
         <ErrorMessage name="name" />
         <br />
         <label>Apellido</label>
@@ -48,4 +53,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default App
