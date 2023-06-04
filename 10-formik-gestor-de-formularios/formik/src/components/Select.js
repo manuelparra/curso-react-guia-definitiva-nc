@@ -5,7 +5,7 @@ const Select = ({ label, ...props }) => {
   console.log(field)
   return (
     <div>
-      <label>{label}</label>
+      <label>{label}{' '}</label>
       <select {...field} {...props} />
       {meta.touched && meta.error ? <div>{meta.error}</div> : null}
     </div>
