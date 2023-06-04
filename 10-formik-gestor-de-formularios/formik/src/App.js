@@ -1,6 +1,7 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form } from 'formik'
 import TextInput from "./components/TextInput"
 import CheckBox from "./components/CheckBox"
+import Select from "./components/Select"
 
 const validate = (values) => {
   const errors = {} 
@@ -27,26 +28,21 @@ const validate = (values) => {
 const App = () => {
   return (
     <Formik 
-      initialValues={{ name: '', lastname: '', email: ''}}
+      initialValues={{ name: '', lastname: '', email: '', chancho: '' }}
       validate={validate}
       onSubmit={values => console.log(values)}
   >
       <Form>
         <TextInput name="name" label="Nombre" />
-        <br />
-        <Field name="option" as="select" className="select">
-          <option value="chanchitofeliz">Chanchito feliz</option>
-          <option value="chanchitotriste">Chanchito triste</option>
-        </Field>
-        <br />
-        <label>Apellido</label>
-        <Field name="lastname" type="text" />
-        <ErrorMessage name="lastname" />
-        <br />
-        <label>Email</label>
-        <Field name="email" type="text" />
-        <ErrorMessage name="email" />   
-        <br />
+        <TextInput name="lastname" label="Apellido" />
+        <TextInput name="email" label="Email" />
+        <label>Seleccione la clase de chanchito que eres</label>
+        <Select label="Tipo de chancho" name="chancho">
+          <option value="">Seleccione el tipo de chancho</option>
+          <option value="filipe">Felipe</option>
+          <option value="chanchitofeliz">Chanchito Feliz</option>
+          <option value="chanchitotriste">Chanchito Triste</option>
+        </Select>
         <CheckBox name="accept">
           Aceptar terminos y condiciones
         </CheckBox>
