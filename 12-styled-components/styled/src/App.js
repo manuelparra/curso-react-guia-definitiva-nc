@@ -23,7 +23,7 @@ const App = () => {
     <Content>
       <P>Hola soy un parrafo</P>
       <Button>Enviar</Button>
-      <Button primary>Enviar</Button>
+      <Button primary="true">Enviar</Button>
     </Content> 
   )
 }
