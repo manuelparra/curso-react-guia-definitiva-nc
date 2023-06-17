@@ -10,9 +10,12 @@ const Content = styled.div`
 `
 
 const Button = styled.button`
-  background-color: ${props => props.primary ? 'red' : 'white'};
+  background-color: ${props => props.primary ? 'red' : 'yellow'};
   color: ${props => props.primary ? 'white' : 'red'};
   padding: 10px 15px;
+  margin-top: 3px;
+  margin-lef: 3px;
+  margin-right: 3px;
   border: solid 2pk red;
   border-radius: 4px;
   cursor: pointer;
@@ -31,6 +34,7 @@ const App = () => {
       <Button primary="true">Enviar</Button>
       <BlockButton>Enviar</BlockButton>
       <BlockButton primary="true">Enviar</BlockButton>
+      <BlockButton as="a" href="#">Enviar</BlockButton>
     </Content> 
   )
 }
