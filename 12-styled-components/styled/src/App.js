@@ -18,12 +18,19 @@ const Button = styled.button`
   cursor: pointer;
 `
 
+const BlockButton = styled(Button)`
+  width: 100%;
+  font-size: 24px;
+`
+
 const App = () => {
   return (
     <Content>
       <P>Hola soy un parrafo</P>
       <Button>Enviar</Button>
       <Button primary="true">Enviar</Button>
+      <BlockButton>Enviar</BlockButton>
+      <BlockButton primary="true">Enviar</BlockButton>
     </Content> 
   )
 }
