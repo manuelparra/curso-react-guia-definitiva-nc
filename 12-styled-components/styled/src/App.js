@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 
+// Para evitar problemas de rendimiento con Styled Components, los componentes creados con esta librería deben
+// ser creados fuera de los métodos de render, o como en este caso, fuera de nuestros componentes funcionales,
+// y esto es debido a que si nosótros llegamos a crear nuestros styles-components dentro de un método de render 
+// este se volveria ridiculamente lento, además tendriamos un mensaje de warning en la consola de nuestro 
+// navegador indicando que el styled-component se esta creanado de manara dinamica, lo cual penaliza mucho el 
+// rendimiento de los componentes
+
 const P = styled.p`
   font-size: 24px;
   color: red;
@@ -11,6 +18,7 @@ const Content = styled.div`
 
 const Button = styled.button`
   background-color: ${props => props.primary ? 'red' : 'yellow'};
+  transition: box-shadow 0.2s ease;
   color: ${props => props.primary ? 'white' : 'red'};
   padding: 10px 15px;
   margin-top: 3px;
@@ -19,6 +27,20 @@ const Button = styled.button`
   border: solid 2pk red;
   border-radius: 4px;
   cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 2px 5px rgb(0, 0, 0, 0.3);
+  }
+
+  &.secondary {
+    background-color: blue;
+    border: solid 2px blue;
+    color: white;
+  }
+
+  .info {
+    font-size: 20px;
+  }
 `
 
 const BlockButton = styled(Button)`
@@ -39,7 +61,9 @@ const App = () => {
     <Content>
       <P>Hola soy un parrafo</P>
       <Button>Enviar</Button>
+      <Button>Enviar<p className="info">Info</p></Button>
       <Button primary="true">Enviar</Button>
+      <Button className="secondary">Enviar</Button>
       <BlockButton>Enviar</BlockButton>
       <BlockButton primary="true">Enviar</BlockButton>
       <BlockButton as="a" href="#">Enviar</BlockButton>
