@@ -2,7 +2,7 @@ const ArticleItem = ({ photo }) => {
   const open = url => window.open(url)
   
   return (
-    <article key={photo.id} onClick={() => open(photo.links.html)}>
+    <article onClick={() => open(photo.links.html)}>
       <img src={photo.urls.regular} alt={photo.description} />
       <p>
         {photo.description == null && photo.alt_description == null ?

@@ -39,13 +39,13 @@ const App = () => {
       <div className="container">
         <div className="center">
           {isLoading && 
-            photos.map(() =>
-              <ArticleItemPlaceholder />
+            photos.map((photo) =>
+              <ArticleItemPlaceholder key={photo.id} />
             )
           }
           {!isLoading && 
             photos.map(photo => 
-              <ArticleItem photo={photo} /> 
+              <ArticleItem key={photo.id} photo={photo} /> 
             )
           }
         </div>
