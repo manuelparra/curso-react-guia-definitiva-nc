@@ -56,6 +56,21 @@ const StyledLink = styled(Link)`
   color: blue;
 `
 
+const Input = styled.input.attrs(props => ({
+  type: 'text',
+  color: props.color || 'red',
+}))`
+  font-size: 20px;
+  border: 1px solid red;
+  color: ${props => props.color};
+  border-radius: 5px;
+  margin-right: 10px;
+`
+
+const Password = styled(Input).attrs({
+  type: 'password'
+})``
+
 const App = () => {
   return (
     <Content>
@@ -71,6 +86,8 @@ const App = () => {
       <Link>Link</Link>
       <br />
       <StyledLink>Link con estilo</StyledLink>
+      <Input color="blue" />
+      <Password color="blue" />
     </Content> 
   )
 }
