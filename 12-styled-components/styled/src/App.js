@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 // Para evitar problemas de rendimiento con Styled Components, los componentes creados con esta librería deben
 // ser creados fuera de los métodos de render, o como en este caso, fuera de nuestros componentes funcionales,
@@ -71,6 +71,22 @@ const Password = styled(Input).attrs({
   type: 'password'
 })``
 
+const girar = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+const Rotar = styled.div`
+  display: inline-block;
+  margin-top: 50px;
+  animation: ${girar} 2s linear infinite;
+`
+
 const App = () => {
   return (
     <Content>
@@ -88,6 +104,8 @@ const App = () => {
       <StyledLink>Link con estilo</StyledLink>
       <Input color="blue" />
       <Password color="blue" />
+      <br />
+      <Rotar>Estoy girando</Rotar>
     </Content> 
   )
 }
