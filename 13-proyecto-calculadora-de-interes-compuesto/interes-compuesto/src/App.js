@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-
+import { Formik, Form } from 'formik'
+import Input from './components/Input'
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -16,10 +17,26 @@ const Section = styled.section`
 `
 
 const App = () => {
+  const handleSubmit = () => {}
   return (
     <Container>
       <Section>
-        lala
+        <Formik 
+          initialValues={{
+            deposit: '', 
+            contribution: '', 
+            years: '', 
+            rate: '', 
+          }} 
+          onSubmit={handleSubmit}
+        >
+          <Form>
+            <Input name="deposit" label="Depósito inicial" />
+            <Input name="contribution" label="Contribución anual" />
+            <Input name="years" label="Años" />
+            <Input name="rate" label="Interes estimado" />
+          </Form>
+        </Formik>
       </Section>
     </Container>
   )
