@@ -49,7 +49,7 @@ const App = () => {
             <Button>Calcular</Button>
           </Form>
         </Formik>
-        {balance !== '' ? <Balance>Balance final: {balance}</Balance> : null}
+        {balance !== '' ? <Balance>My balance final: {balance}</Balance> : null}
       </Section>
     </Container>
   )
