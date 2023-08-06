@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import Title from './components/Title' 
 import MyForm from './components/MyForm'
 import MyList from './components/MyList'
@@ -11,6 +11,19 @@ const App = () => {
       values
     ]))
   }, [])
+
+  const iterador = 50000000
+  console.time('memo')
+
+  const memoized = useMemo(() => {
+    let total = 0
+    for (let i = 0; i < iterador; i++) {
+      total = total * iterador
+    }
+    return total
+  })
+
+  console.timeEnd('memo')
 
   return (
     <div>
