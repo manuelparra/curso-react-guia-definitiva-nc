@@ -43,8 +43,8 @@ const App = () => {
     <div>
       <Provider>
         <Componente />
+        <Componente2 />
       </Provider>
-      <Componente2 />
     </div>
   )
 }
