@@ -1,4 +1,4 @@
-import { Outlet, Routes, Route, Link, useParams } from 'react-router-dom'
+import { Outlet, Routes, Route, Link } from 'react-router-dom'
 
 const Inicio = () => {
   return (
@@ -18,24 +18,16 @@ const Proyecto2 = () => {
   )
 }
 
-const Proyecto = () => {
-  const myId = useParams()
-  console.log(myId)
-  return (
-    <h2>Proyecto {myId.proyecto_id}</h2>
-  )
-}
-
 const Portafolio = () => {
   return (
     <div>
       <h1>Portafolio</h1>
       <ul>
         <li>
-          <Link to="/portafolio/1">Proyecto 1</Link>
+          <Link to="/portafolio/proyecto-1">Proyecto 1</Link>
         </li>
         <li>
-          <Link to="/portafolio/2">Proyecto 2</Link>
+          <Link to="/portafolio/proyecto-2">Proyecto 2</Link>
         </li>
       </ul> 
       <div>
@@ -62,7 +54,8 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Inicio />} />
           <Route path="/portafolio" element={<Portafolio />}>
-            <Route path=":proyecto_id" element={<Proyecto />} />
+            <Route path="proyecto-1" element={<Proyecto1 />} />
+            <Route path="proyecto-2" element={<Proyecto2 />} />
           </Route>
         </Routes>
       </section>
