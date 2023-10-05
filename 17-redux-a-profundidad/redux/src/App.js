@@ -43,7 +43,7 @@ const App = () => {
       <form onSubmit={submit}>
         <input value={value} onChange={e => setValue(e.target.value)} />
       </form>
-
+      <br />
       <button onClick={() => dispatch(setFilter('all'))}>Mostrar todos</button>
       <button onClick={() => dispatch(setFilter('complete'))}>Completados</button>
       <button onClick={() => dispatch(setFilter('incomplete'))}>Incompletos</button>
