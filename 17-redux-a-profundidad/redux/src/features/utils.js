@@ -1,3 +1,5 @@
+export const reduceReducers = (...reducer) => (state, action) => 
+  reducer.reduce((acc, el) => el(acc, action), state)
 
 const initialFetching = { loading: 'idle', error: null } // idle, pending, succeeded, rejected
 
@@ -24,5 +26,25 @@ export const makeSetReducer = actions => (state = 'all', action) => {
     }
     default: 
       return state
+  }
+}
+
+export const makeCrudReducer = actions => (state = [], action) => {
+  switch (action.type) {
+    case actions[0]: {
+      return state.concat({ ...action.payload })
+    }   
+    case actions[1]: {
+      const newEntities = state.map(entity => {
+        if (entity.id === action.payload.id) {
+          return { ...entity, completed: !entity.completed }
+        }
+
+        return entity
+      })
+      return newEntities
+    }
+    default: 
+      return state 
   }
 }
