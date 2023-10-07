@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
-import { fetchTrunk, setTodoAdd, setFilter, setComplete, selectTodos, selectStatus } from './features/todos'
+import { fetchTrunk, selectTodos, selectStatus } from './features/todos'
 
 const TodoItem = ({ todo }) => {
   const dispatch = useDispatch()
@@ -8,14 +8,15 @@ const TodoItem = ({ todo }) => {
   return (
     <li
       style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-      onClick={() => dispatch(setComplete(todo))}
+      onClick={() => dispatch({ type: 'todo/complete', payload: todo })}
     >{todo.title}</li>
   )
 }
 
 const App = () => {
-  const [value , setValue] = useState('')
+  const [value, setValue] = useState('')
   const dispatch = useDispatch()
+
   const todos = useSelector(selectTodos)
   const status = useSelector(selectStatus)
  
@@ -26,7 +27,7 @@ const App = () => {
     }
     const id = Math.random().toString(36)
     const todo = { title: value, complete: false, id }
-    dispatch(setTodoAdd(todo))
+    dispatch({ type: 'todo/add', payload: todo })
     setValue('')
   }
 
@@ -44,9 +45,9 @@ const App = () => {
         <input value={value} onChange={e => setValue(e.target.value)} />
       </form>
       <br />
-      <button onClick={() => dispatch(setFilter('all'))}>Mostrar todos</button>
-      <button onClick={() => dispatch(setFilter('complete'))}>Completados</button>
-      <button onClick={() => dispatch(setFilter('incomplete'))}>Incompletos</button>
+      <button onClick={() => dispatch({ type: 'filter/set', payload: 'all' })}>Mostrar todos</button>
+      <button onClick={() => dispatch({ type: 'filter/set', payload: 'complete' })}>Completados</button>
+      <button onClick={() => dispatch({ type: 'filter/set', payload: 'incomplete' })}>Incompletos</button>
       <button onClick={() => dispatch(fetchTrunk())}>Fetch</button>
 
       <ul>

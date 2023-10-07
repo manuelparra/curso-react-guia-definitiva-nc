@@ -1,13 +1,25 @@
 export const reduceReducers = (...reducer) => (state, action) => 
   reducer.reduce((acc, el) => el(acc, action), state)
 
-export const makeActionCreator = (type, ...argNames) => (...args) => {
+export const makeActionType = entity => ([
+  `${entity}/pending`,
+  `${entity}/fulfilled`,
+  `${entity}/rejected`
+])
+
+const makeActionCreator = (type, ...argNames) => (...args) => {
   const action = { type }
   argNames.forEach((arg, index) => {
-    action[argNames[index]] = args[index]
+    action[arg] = args[index]
   })
   return action
 }
+
+export const asyncMac = asyncTypes => ([
+  makeActionCreator(asyncTypes[0]),
+  makeActionCreator(asyncTypes[1], 'payload'),
+  makeActionCreator(asyncTypes[2], 'error'),
+])
 
 const initialFetching = { loading: 'idle', error: null } // idle, pending, succeeded, rejected
 

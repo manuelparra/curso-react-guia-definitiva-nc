@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
-import { makeActionCreator, makeFetchingReducer, makeSetReducer, reduceReducers, makeCrudReducer } from './utils'
+import { makeActionType, makeFetchingReducer, makeSetReducer, makeCrudReducer, reduceReducers, asyncMac } from './utils'
+
+const asyncTodos = makeActionType('todos')
+
+const [setPending, setFulfilled, setError] = asyncMac(asyncTodos) 
 
 export const fetchTrunk = () => async dispatch => {
   dispatch(setPending())
@@ -7,22 +11,15 @@ export const fetchTrunk = () => async dispatch => {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos')
     const data = await response.json()
     const todos = data.slice(0, 10)
-    dispatch(setFulfillled(todos))
+    dispatch(setFulfilled(todos))
   } catch (e) {
     dispatch(setError(e.message))
   }
 }
 
-export const setPending = () => makeActionCreator('todos/pending')
-export const setTodoAdd = makeActionCreator('todo/add', 'payload')
-export const setFulfillled = makeActionCreator('todos/fulfilled', 'payload')
-export const setError  = makeActionCreator('todos/error', 'error')
-export const setComplete = makeActionCreator('todo/complete', 'payload')
-export const setFilter = makeActionCreator('filter/set', 'payload')
-
 export const filterReducer = makeSetReducer(['filter/set'])
 
-export const fetchingReducer = makeFetchingReducer(['todos/pending', 'todos/fulfilled', 'todos/rejected'])
+export const fetchingReducer = makeFetchingReducer(asyncTodos)
 
 const fullFilledReducer = makeSetReducer(['todos/fulfilled']) 
 
@@ -38,7 +35,6 @@ export const reducer = combineReducers({
   filter: filterReducer,
 })
 
-
 export const selectTodos = state => {
   const { todos: { entities }, filter } = state
   
@@ -49,7 +45,7 @@ export const selectTodos = state => {
   if (filter === 'incomplete') {
     return entities.filter(todo => !todo.completed)
   }
-
+  
   return entities
 }
 
