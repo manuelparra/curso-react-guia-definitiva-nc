@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import { makeFetchingReducer, makeSetReducer, reduceReducers, makeCrudReducer } from './utils'
+import { makeActionCreator, makeFetchingReducer, makeSetReducer, reduceReducers, makeCrudReducer } from './utils'
 
 export const fetchTrunk = () => async dispatch => {
   dispatch(setPending())
@@ -9,35 +9,20 @@ export const fetchTrunk = () => async dispatch => {
     const todos = data.slice(0, 10)
     dispatch(setFulfillled(todos))
   } catch (e) {
-    dispatch(setError())
+    dispatch(setError(e.message))
   }
 }
 
-export const setPending = () => {
-  return {
-    type: 'todos/pending'    
-  }
-}
+export const setPending = () => makeActionCreator('todos/pending')
+export const setTodoAdd = makeActionCreator('todo/add', 'payload')
+export const setFulfillled = makeActionCreator('todos/fulfilled', 'payload')
+export const setError  = makeActionCreator('todos/error', 'error')
+export const setComplete = makeActionCreator('todo/complete', 'payload')
+export const setFilter = makeActionCreator('filter/set', 'payload')
 
-export const setTodoAdd = payload => ({ type: 'todo/add', payload })
+export const filterReducer = makeSetReducer(['filter/set'])
 
-export const setFulfillled = payload => ({ type: 'todos/fulfilled', payload })
-
-export const setError = e => ({ type: 'todos/error', error: e.message })
-
-export const setComplete = payload => ({ type: 'todo/complete', payload })
-
-export const setFilter = payload => ({ type: 'filter/set', payload })
-
-export const filterReducer = makeSetReducer([
-  'filter/set'
-])
-
-export const fetchingReducer = makeFetchingReducer([
-  'todos/pending',
-  'todos/fulfilled',
-  'todos/rejected'
-])
+export const fetchingReducer = makeFetchingReducer(['todos/pending', 'todos/fulfilled', 'todos/rejected'])
 
 const fullFilledReducer = makeSetReducer(['todos/fulfilled']) 
 

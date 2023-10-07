@@ -1,6 +1,14 @@
 export const reduceReducers = (...reducer) => (state, action) => 
   reducer.reduce((acc, el) => el(acc, action), state)
 
+export const makeActionCreator = (type, ...argNames) => (...args) => {
+  const action = { type }
+  argNames.forEach((arg, index) => {
+    action[argNames[index]] = args[index]
+  })
+  return action
+}
+
 const initialFetching = { loading: 'idle', error: null } // idle, pending, succeeded, rejected
 
 export const makeFetchingReducer = actions => (state = initialFetching, action) => {
