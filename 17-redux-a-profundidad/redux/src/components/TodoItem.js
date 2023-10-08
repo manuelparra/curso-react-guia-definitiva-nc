@@ -6,10 +6,18 @@ const TodoItem = ({ todo }) => {
   return (
     <>
       <li
-        style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+        style={{ 
+          textDecoration: todo.completed ? 'line-through' : 'none',
+          cursor: 'pointer' 
+        }}
         onClick={() => dispatch({ type: 'todo/complete', payload: todo })}
       >{todo.title}</li>
-      <span onClick={() => dispatch({ type: 'todo/delete', payload: todo.id })}>delete</span>
+      <span 
+        style={{
+          cursor: 'pointer'
+        }}
+        onClick={() => dispatch({ type: 'todo/delete', payload: todo.id })}
+      >delete</span>
     </>
   )
 }

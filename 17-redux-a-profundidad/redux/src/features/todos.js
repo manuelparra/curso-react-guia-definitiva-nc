@@ -10,7 +10,7 @@ export const fetchTrunk = () => async dispatch => {
   try {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos')
     const data = await response.json()
-    const todos = data.slice(0, 10)
+    const todos = data.slice(0, 20)
     dispatch(setFulfilled(todos))
   } catch (e) {
     dispatch(setError(e.message))
