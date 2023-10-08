@@ -64,6 +64,9 @@ export const makeCrudReducer = actions => (state = [], action) => {
       })
       return newEntities
     }
+    case actions[2]: {
+      return state.filter(todo => todo.id != action.payload )
+    }
     default: 
       return state 
   }

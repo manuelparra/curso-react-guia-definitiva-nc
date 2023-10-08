@@ -1,17 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import { fetchTrunk, selectTodos, selectStatus } from './features/todos'
-
-const TodoItem = ({ todo }) => {
-  const dispatch = useDispatch()
-
-  return (
-    <li
-      style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-      onClick={() => dispatch({ type: 'todo/complete', payload: todo })}
-    >{todo.title}</li>
-  )
-}
+import TodoItem from './components/TodoItem'
 
 const App = () => {
   const [value, setValue] = useState('')
@@ -49,7 +39,6 @@ const App = () => {
       <button onClick={() => dispatch({ type: 'filter/set', payload: 'complete' })}>Completados</button>
       <button onClick={() => dispatch({ type: 'filter/set', payload: 'incomplete' })}>Incompletos</button>
       <button onClick={() => dispatch(fetchTrunk())}>Fetch</button>
-
       <ul>
         {todos.map(todo => <TodoItem key={todo.id} todo={todo} />)}
       </ul>

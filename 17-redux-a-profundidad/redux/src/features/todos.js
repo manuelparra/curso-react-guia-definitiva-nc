@@ -23,7 +23,7 @@ export const fetchingReducer = makeFetchingReducer(asyncTodos)
 
 const fullFilledReducer = makeSetReducer(['todos/fulfilled']) 
 
-const crudReducer = makeCrudReducer(['todo/add', 'todo/complete'])
+const crudReducer = makeCrudReducer(['todo/add', 'todo/complete', 'todo/delete'])
 
 export const todosReducer = reduceReducers(crudReducer, fullFilledReducer)
 
