@@ -2,10 +2,10 @@ import Link from 'next/link'
 
 const Chanchito = () => {
   return (
-    <dev>
+    <div>
       <p>Chanchito Triste</p>
       <Link href="/">Inicio</Link>
-    </dev>
+    </div>
   )
 }
 
