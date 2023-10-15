@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
+import Image from 'next/image'
 
 const Home = () => {
   const [id, setId] = useState(1)
@@ -35,6 +36,14 @@ const Home = () => {
       </select>
       <br />
       <Link href={propiedad.valor === 'undefine' ? `/shop/${id}` : `/shop/${id}/${propiedad.valor}`}>{propiedad.valor === 'undefine' ? `Ir a Shop/${id}` : `Ir a Shop/${id}/${propiedad.valor}`}</Link>
+      <br />
+      <Image 
+        src='/coffee.png' 
+        alt='Coffee' 
+        width={300} 
+        height={300}
+        style={{ marginTop: "20px" }}
+        priority={true} />
     </div> 
   )
 }
